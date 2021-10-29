@@ -1,22 +1,27 @@
 function blackjack(array) {
-  var stack = 0
+  // Card position in the array
+  var card = 0
   function dealer(x, y) {
+    // Dealer sets up current player
     var playerTotal = 0
     var bust = false
     function player() {
       if (playerTotal === 0) {
+        // First round for this player
         playerTotal = x + y
         console.log(playerTotal)
-        stack++
       } else {
-        var nextCard = array[(stack - 1)]
-        playerTotal = playerTotal + nextCard
+        var currentCard = array[(card)]
+        playerTotal = playerTotal + currentCard
         if (playerTotal <= 21){
           console.log(playerTotal)
-          stack++
+          // Increment to the next card to play in the stack
+          card++
         } else if (playerTotal > 21 && !bust) {
           console.log('bust')
           bust = true
+          // Increment to the next card to play in the stack
+          card++
         } else {
           console.log('you are done!')
         }
